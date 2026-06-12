@@ -1,0 +1,71 @@
+
+Use the provided reference image and character sheet as the primary identity source.
+
+Generate the EXACT SAME woman with maximum identity preservation.
+
+Identity lock priority:
+Face shape > Eyes > Eyebrows > Nose > Lips > Hairline > Hairstyle > Skin tone > Accessories
+
+Maintain:
+- Soft oval face
+- Tapered jawline
+- Small refined chin
+- Medium-large almond-shaped dark brown eyes
+- Thick natural eyebrows with soft arch
+- Straight nose bridge with refined tip
+- Medium-full natural pink lips
+- Light-medium warm skin tone
+- Long dark brown side-parted hair
+- Natural glam makeup
+- Soft confident expression
+
+Do NOT alter:
+- Facial structure
+- Eye shape
+- Eyebrow shape
+- Nose proportions
+- Lip proportions
+- Hairline
+- Skin tone
+
+VIDEO INSTRUCTION:
+The woman naturally speaks the exact Hindi dialogue written below.
+Her lip movement, facial expressions, timing, emotions, and body language must perfectly match the spoken Hindi dialogue.
+The entire video action should be driven by the dialogue content.
+Do not change the dialogue.
+Do not translate the dialogue.
+Keep natural pauses, realistic mouth movement, and synchronized speech.
+
+Hindi Dialogue:
+स्क्रॉल करते-करते मेरी वीडियो पर रुक गए, गलती से हुआ था या अब रोज़ मुझे देखने की आदत पड़ चुकी है? सच बोलना, मैं जज नहीं करूँगी।
+
+Quality:
+Ultra realistic
+Photorealistic
+Natural skin texture
+High facial detail
+Professional cinematography
+Realistic facial motion
+Natural blinking
+Natural breathing
+Accurate lip sync
+8K detail
+True-to-life colors
+
+Camera:
+Smartphone cinematic video
+Natural handheld movement
+Realistic focus behavior
+Shallow depth of field
+
+Negative Prompt:
+different face, different woman, altered facial structure, different eyes, different eyebrows, different nose, different lips, different hairstyle, different skin tone, cartoon, anime, CGI, artificial face, plastic skin, distorted face, bad lip sync, robotic expression, exaggerated acting, low quality, blurry, identity drift
+
+Identity consistency strength: maximum
+Reference adherence: maximum
+Face fidelity: maximum
+Character continuity: locked
+
+Only change the Hindi Dialogue section for every new video.
+Everything else remains exactly the same.
+```
