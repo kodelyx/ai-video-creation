@@ -1,136 +1,149 @@
-<div align="center">
+# AI Video Creation Pipeline 🎬
 
-# AI Video Creation Pipeline
-
-**One photo → Character Sheet → Storyboard → Cinematic Video Reel**
-
-Works with Kling AI · Runway · Luma · Google Veo · Pika
+> **Turn a single photo into a cinematic AI-generated Instagram reel — fully prompt-driven, no code required.**
 
 [![AI Powered](https://img.shields.io/badge/AI-Powered-blueviolet?logo=openai&logoColor=white)](#)
-[![Instagram](https://img.shields.io/badge/Format-9%3A16_Reel-E4405F?logo=instagram&logoColor=white)](#)
+[![Format](https://img.shields.io/badge/Format-9%3A16_Reel-E4405F?logo=instagram&logoColor=white)](#)
 [![Stars](https://img.shields.io/github/stars/kodelyx/ai-video-creation?style=social)](https://github.com/kodelyx/ai-video-creation/stargazers)
-
-</div>
 
 ---
 
 ## Pipeline Overview
 
-```mermaid
-graph LR
-    A["Reference Photo"] -->|image_to_character_prompt| B["Character Sheet"]
-    B -->|storyboard_planner_prompt| C["Storyboard"]
-    C -->|storyboard_to_video_prompt| D["Video Prompt"]
-    D -->|AI Video Tool| E["Final Reel"]
-```
+![Pipeline Flow](pipeline.png)
+
+| Step | You Provide | Prompt File Used | AI Generates |
+|:----:|:------------|:-----------------|:-------------|
+| 1 | Your photo (`dp1.png`) | [`image_to_character_prompt.txt`](image_to_character_prompt.txt) | Character identity sheet |
+| 2 | Character sheet + reel idea | [`storyboard_Image_planner_prompt.txt`](storyboard_Image_planner_prompt.txt) | 6-panel cinematic storyboard |
+| 3 | Storyboard image | [`storyboard_Image_to_video_prompt.txt`](storyboard_Image_to_video_prompt.txt) | Production-ready video prompt |
+| 4 | Video prompt + character ref | Your AI video tool (Kling/Runway/Veo) | Final 9:16 reel |
 
 ---
 
-## Case Study — Full Pipeline Output
+## Live Demo — Actual Pipeline Output
 
-### 1. Reference Image → `dp1.png`
+Every image and video below was generated using this pipeline.
 
-Single source photo used as the identity anchor for the entire pipeline.
+### Step 1 → Reference Photo
 
-<p align="center">
-  <img src="dp1.png" width="280"/>
-</p>
+This is the **only real photo** in the entire pipeline. Everything else is AI-generated from this single image.
 
-### 2. Character Sheet → `character_sheet.png`
+> **Input:** One selfie/portrait photo  
+> **Prompt:** [`image_to_character_prompt.txt`](image_to_character_prompt.txt)
 
-Generated using [`image_to_character_prompt.txt`](image_to_character_prompt.txt) — locks face shape, eyes, skin tone, hair, expression, and accessories for identity consistency across all generations.
-
-<p align="center">
-  <img src="character_sheet.png" width="550"/>
-</p>
-
-### 3. Storyboard → `storyboard_Image.png`
-
-Generated using [`storyboard_Image_planner_prompt.txt`](storyboard_Image_planner_prompt.txt) — 6-panel cinematic layout with scene titles, camera styles, mood, and direction notes.
-
-<p align="center">
-  <img src="storyboard_Image.png" width="600"/>
-</p>
-
-### 4. Final Output → `demo.gif`
-
-Generated using [`storyboard_Image_to_video_prompt.txt`](storyboard_Image_to_video_prompt.txt) — production-ready 9:16 reel with lip-sync, physics lock, and cinematic camera work.
-
-<p align="center">
-  <img src="demo.gif" width="280"/>
-</p>
+![Reference Photo — dp1.png](dp1.png)
 
 ---
 
-## How to Use
+### Step 2 → Character Identity Sheet
 
-### Step 1 — Generate Character Sheet
+The AI analyzes the reference photo and generates a detailed **identity lock sheet** — cataloging face shape, eyes, skin tone, hair, expression, makeup, clothing, and accessories. This sheet ensures the same face appears consistently across all future generations.
 
-Upload your reference photo to any AI image tool (Gemini, ChatGPT, Midjourney) with:
+> **Input:** `dp1.png`  
+> **Prompt:** [`image_to_character_prompt.txt`](image_to_character_prompt.txt)  
+> **Output:** `character_sheet.png`
 
-**Prompt →** [`image_to_character_prompt.txt`](image_to_character_prompt.txt)
+![Character Sheet — Identity Lock Reference](character_sheet.png)
 
-The AI analyzes facial features and generates a structured character sheet with an identity lock and consistency priority strip.
-
-### Step 2 — Plan Storyboard
-
-Upload your character sheet + reel concept (song lyrics, product, or theme) with:
-
-**Prompt →** [`storyboard_Image_planner_prompt.txt`](storyboard_Image_planner_prompt.txt)
-
-Creates a 6-panel 3×2 storyboard with scene flow, camera styles, and direction notes. Asks for your approval before finalizing.
-
-### Step 3 — Generate Video Prompt
-
-Upload the storyboard image with:
-
-**Prompt →** [`storyboard_Image_to_video_prompt.txt`](storyboard_Image_to_video_prompt.txt)
-
-Outputs a detailed, timestamped video generation prompt with scene-by-scene breakdown, physics lock rules, lip-sync instructions, camera styles, and negative prompts.
-
-### Step 4 — Generate Video
-
-Paste the output prompt into your AI video tool along with `character_sheet.png` as reference.
-
-| Tool | Best For |
-|:-----|:---------|
-| Kling AI | Lip-sync + identity consistency |
-| Runway Gen-3 | Cinematic motion |
-| Luma Dream Machine | Fast iterations |
-| Google Veo | Photorealism |
+The bottom strip shows **Consistency Priority (High → Low):** Face Shape → Eyes → Eyebrows → Nose → Lips → Hairline → Hairstyle → Skin Tone → Accessories
 
 ---
 
-## Bonus — Direct Video Prompt
+### Step 3 → Cinematic Storyboard
 
-For quick one-shot videos without the full pipeline:
+Using the character sheet and a reel concept (product promo, song lip-sync, lifestyle, etc.), the AI creates a **6-panel storyboard** with scene titles, descriptions, camera angles, mood, and color palette.
 
-**Prompt →** [`ai_influencer_prompt.txt`](ai_influencer_prompt.txt)
+> **Input:** `character_sheet.png` + reel concept  
+> **Prompt:** [`storyboard_Image_planner_prompt.txt`](storyboard_Image_planner_prompt.txt)  
+> **Output:** `storyboard_Image.png`
 
-Swap the Hindi dialogue section for each new video. Everything else stays locked.
+![Storyboard — 6-Panel Cinematic Layout](storyboard_Image.png)
+
+Each panel includes: **Scene title** · **Action description** · **Camera style** (Macro Close-Up, Medium Shot, Tight Portrait, Handheld Lifestyle, Product Detail, Hero Shot)
+
+---
+
+### Step 4 → Final Video
+
+The storyboard is converted into a **timestamped video generation prompt** with lip-sync, physics lock, camera direction, and negative rules — then fed to an AI video generator.
+
+> **Input:** `storyboard_Image.png`  
+> **Prompt:** [`storyboard_Image_to_video_prompt.txt`](storyboard_Image_to_video_prompt.txt)  
+> **Output:** `Finally_Video.mp4`
+
+![Final Output — AI Generated Reel](demo.gif)
+
+---
+
+## How Each Prompt Works
+
+### `image_to_character_prompt.txt`
+Analyzes a reference photo and creates a professional **Character Sheet (Identity Lock Version)** with:
+- Face analysis (shape, jawline, chin, eyes, nose, lips)
+- Skin, hair, expression, makeup, clothing breakdown
+- Bottom detail boxes (Expression, Makeup, Clothing, Accessories, Pose, Lighting, Camera, Identity Keywords)
+- Consistency priority strip for future generation consistency
+
+### `storyboard_Image_planner_prompt.txt`
+Takes the character sheet + your reel concept and:
+1. Analyzes character identity, outfit, mood, and aesthetic
+2. Suggests a reel base (type, mood, scene style, action, format)
+3. Asks for your approval before generating
+4. Creates a **3×2 storyboard sheet** with 6 labeled scenes, camera styles, direction notes, mood/tone, and color palette
+
+### `storyboard_Image_to_video_prompt.txt`
+Converts the storyboard into a **production-ready video prompt** with:
+- Scene-by-scene timestamps (0.0–1.5s, 1.5–3.0s, etc.)
+- Camera styles per scene (macro, portrait, handheld, hero shot)
+- Auto-generated Hindi dialogue in Devanagari
+- Physics Lock rules (no floating objects, correct hand anatomy, 5 fingers)
+- Negative rules (no cartoon, no 3D, no distortion, no watermarks)
+
+### `ai_influencer_prompt.txt`
+**Shortcut prompt** — skip the full pipeline. Uses reference image + character sheet directly to generate a lip-synced Hindi dialogue video. Just swap the dialogue section for each new video. Identity lock stays the same.
+
+---
+
+## Compatible AI Tools
+
+| Tool | Best For | Use With |
+|:-----|:---------|:---------|
+| **Kling AI** | Lip-sync + identity consistency | Video generation (Step 4) |
+| **Runway Gen-3** | Cinematic motion quality | Video generation (Step 4) |
+| **Google Veo** | Photorealism | Video generation (Step 4) |
+| **Luma Dream Machine** | Fast iterations | Video generation (Step 4) |
+| **ChatGPT / Gemini** | Image generation | Character sheet + Storyboard (Steps 1-3) |
+| **Midjourney** | High-quality images | Character sheet (Step 1) |
 
 ---
 
 ## Files
 
-| File | Purpose |
-|:-----|:--------|
+| File | What It Does |
+|:-----|:-------------|
 | `dp1.png` | Source identity photo |
-| `character_sheet.png` | Identity lock reference sheet |
+| `character_sheet.png` | AI-generated identity lock sheet |
 | `storyboard_Image.png` | 6-panel cinematic storyboard |
-| `demo.gif` | Final output preview |
+| `demo.gif` | Final output preview (animated) |
 | `Finally_Video.mp4` | Final output (full quality) |
-| `image_to_character_prompt.txt` | Photo → Character Sheet |
-| `storyboard_Image_planner_prompt.txt` | Sheet → Storyboard |
-| `storyboard_Image_to_video_prompt.txt` | Storyboard → Video Prompt |
-| `ai_influencer_prompt.txt` | Direct video generation |
+| `image_to_character_prompt.txt` | Photo → Character Sheet prompt |
+| `storyboard_Image_planner_prompt.txt` | Character Sheet → Storyboard prompt |
+| `storyboard_Image_to_video_prompt.txt` | Storyboard → Video Prompt generator |
+| `ai_influencer_prompt.txt` | Direct video generation shortcut |
 
 ---
 
-<div align="center">
+## Contributing
 
-**No code required. Fully prompt-driven.**
+Found better prompt techniques? PRs welcome.
 
-⭐ Star this repo if it saved you time.
+```
+git checkout -b improve-prompt
+git commit -m "improve: better physics lock rules"
+git push origin improve-prompt
+```
 
-</div>
+---
+
+⭐ **Star this repo** if it saved you hours of prompt engineering.
