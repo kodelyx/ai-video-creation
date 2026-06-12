@@ -10,14 +10,14 @@
 
 ## Pipeline Overview
 
-![Pipeline Flow](pipeline.png)
+![Pipeline Flow](assets/pipeline.png)
 
 | Step | Prompt Used | Output Generated |
 |:----:|:------------|:-----------------|
-| 1 | [`ai_influencer_prompt.txt`](ai_influencer_prompt.txt) | AI Character Photo (`dp1.png`) |
-| 2 | [`image_to_character_prompt.txt`](image_to_character_prompt.txt) | Character Identity Sheet (`character_sheet.png`) |
-| 3 | [`storyboard_Image_planner_prompt.txt`](storyboard_Image_planner_prompt.txt) | Cinematic Storyboard (`storyboard_Image.png`) |
-| 4 | [`storyboard_Image_to_video_prompt.txt`](storyboard_Image_to_video_prompt.txt) | Final Video Reel (`Finally_Video.mp4`) |
+| 1 | [`ai_influencer_prompt.txt`](prompts/ai_influencer_prompt.txt) | AI Character Photo (`dp1.png`) |
+| 2 | [`image_to_character_prompt.txt`](prompts/image_to_character_prompt.txt) | Character Identity Sheet (`character_sheet.png`) |
+| 3 | [`storyboard_Image_planner_prompt.txt`](prompts/storyboard_Image_planner_prompt.txt) | Cinematic Storyboard (`storyboard_Image.png`) |
+| 4 | [`storyboard_Image_to_video_prompt.txt`](prompts/storyboard_Image_to_video_prompt.txt) | Final Video Reel (`Finally_Video.mp4`) |
 
 ---
 
@@ -25,24 +25,24 @@
 
 ### Step 1 → AI Character Photo (`dp1.png`)
 
-This character image is generated using [`ai_influencer_prompt.txt`](ai_influencer_prompt.txt). The prompt defines the AI influencer's complete identity — face shape, eyes, skin tone, hair, expression, and style. This becomes the identity anchor for the entire pipeline.
+This character image is generated using [`ai_influencer_prompt.txt`](prompts/ai_influencer_prompt.txt). The prompt defines the AI influencer's complete identity — face shape, eyes, skin tone, hair, expression, and style. This becomes the identity anchor for the entire pipeline.
 
-> **Prompt:** [`ai_influencer_prompt.txt`](ai_influencer_prompt.txt)  
+> **Prompt:** [`ai_influencer_prompt.txt`](prompts/ai_influencer_prompt.txt)  
 > **Output:** `dp1.png`
 
-![AI Character — Generated using ai_influencer_prompt.txt](dp1.png)
+![AI Character — Generated using ai_influencer_prompt.txt](assets/dp1.png)
 
 ---
 
 ### Step 2 → Character Identity Sheet (`character_sheet.png`)
 
-The AI character photo (`dp1.png`) is fed into [`image_to_character_prompt.txt`](image_to_character_prompt.txt). The AI analyzes every facial detail and generates a structured **Identity Lock Sheet** — cataloging face shape, eyes, nose, lips, skin tone, hair, expression, makeup, clothing, accessories, pose, lighting, and camera characteristics.
+The AI character photo (`dp1.png`) is fed into [`image_to_character_prompt.txt`](prompts/image_to_character_prompt.txt). The AI analyzes every facial detail and generates a structured **Identity Lock Sheet** — cataloging face shape, eyes, nose, lips, skin tone, hair, expression, makeup, clothing, accessories, pose, lighting, and camera characteristics.
 
 > **Input:** `dp1.png`  
-> **Prompt:** [`image_to_character_prompt.txt`](image_to_character_prompt.txt)  
+> **Prompt:** [`image_to_character_prompt.txt`](prompts/image_to_character_prompt.txt)  
 > **Output:** `character_sheet.png`
 
-![Character Sheet — Identity Lock Reference](character_sheet.png)
+![Character Sheet — Identity Lock Reference](assets/character_sheet.png)
 
 The bottom strip shows **Consistency Priority (High → Low):** Face Shape → Eyes → Eyebrows → Nose → Lips → Hairline → Hairstyle → Skin Tone → Accessories
 
@@ -50,13 +50,13 @@ The bottom strip shows **Consistency Priority (High → Low):** Face Shape → E
 
 ### Step 3 → Cinematic Storyboard (`storyboard_Image.png`)
 
-The character sheet is used with a reel concept (product, song, lifestyle) in [`storyboard_Image_planner_prompt.txt`](storyboard_Image_planner_prompt.txt). The AI creates a **6-panel 3×2 storyboard** with scene titles, descriptions, camera angles, mood, and color palette.
+The character sheet is used with a reel concept (product, song, lifestyle) in [`storyboard_Image_planner_prompt.txt`](prompts/storyboard_Image_planner_prompt.txt). The AI creates a **6-panel 3×2 storyboard** with scene titles, descriptions, camera angles, mood, and color palette.
 
 > **Input:** `character_sheet.png` + reel concept  
-> **Prompt:** [`storyboard_Image_planner_prompt.txt`](storyboard_Image_planner_prompt.txt)  
+> **Prompt:** [`storyboard_Image_planner_prompt.txt`](prompts/storyboard_Image_planner_prompt.txt)  
 > **Output:** `storyboard_Image.png`
 
-![Storyboard — 6-Panel Cinematic Layout](storyboard_Image.png)
+![Storyboard — 6-Panel Cinematic Layout](assets/storyboard_Image.png)
 
 Each panel includes: **Scene title** · **Action description** · **Camera style** (Macro Close-Up, Medium Shot, Tight Portrait, Handheld Lifestyle, Product Detail, Hero Shot)
 
@@ -64,13 +64,13 @@ Each panel includes: **Scene title** · **Action description** · **Camera style
 
 ### Step 4 → Final Video (`Finally_Video.mp4`)
 
-The storyboard is converted into a **timestamped video generation prompt** using [`storyboard_Image_to_video_prompt.txt`](storyboard_Image_to_video_prompt.txt). The prompt includes scene-by-scene timestamps, lip-sync, physics lock, camera direction, Hindi dialogue, and negative rules — ready to paste into any AI video generator.
+The storyboard is converted into a **timestamped video generation prompt** using [`storyboard_Image_to_video_prompt.txt`](prompts/storyboard_Image_to_video_prompt.txt). The prompt includes scene-by-scene timestamps, lip-sync, physics lock, camera direction, Hindi dialogue, and negative rules — ready to paste into any AI video generator.
 
 > **Input:** `storyboard_Image.png`  
-> **Prompt:** [`storyboard_Image_to_video_prompt.txt`](storyboard_Image_to_video_prompt.txt)  
+> **Prompt:** [`storyboard_Image_to_video_prompt.txt`](prompts/storyboard_Image_to_video_prompt.txt)  
 > **Output:** `Finally_Video.mp4`
 
-![Final Output — AI Generated Reel](demo.gif)
+![Final Output — AI Generated Reel](assets/demo.gif)
 
 ---
 
@@ -112,19 +112,24 @@ Converts the storyboard into a **production-ready video prompt** with:
 
 ---
 
-## Files
+## Repository Structure
 
-| File | What It Does |
-|:-----|:-------------|
-| `ai_influencer_prompt.txt` | Step 1 — Generates AI character photo |
-| `dp1.png` | AI-generated character photo |
-| `image_to_character_prompt.txt` | Step 2 — Photo → Character Sheet |
-| `character_sheet.png` | Identity lock reference sheet |
-| `storyboard_Image_planner_prompt.txt` | Step 3 — Sheet → Storyboard |
-| `storyboard_Image.png` | 6-panel cinematic storyboard |
-| `storyboard_Image_to_video_prompt.txt` | Step 4 — Storyboard → Video Prompt |
-| `demo.gif` | Final output preview (animated) |
-| `Finally_Video.mp4` | Final output (full quality) |
+```
+ai-video-creation/
+├── assets/
+│   ├── dp1.png                    # AI character photo
+│   ├── character_sheet.png        # Identity lock sheet
+│   ├── storyboard_Image.png       # 6-panel storyboard
+│   ├── pipeline.png               # Pipeline overview banner
+│   ├── demo.gif                   # Final output preview
+│   └── Finally_Video.mp4          # Final output (full quality)
+├── prompts/
+│   ├── ai_influencer_prompt.txt           # Step 1 — Generate AI character
+│   ├── image_to_character_prompt.txt      # Step 2 — Photo → Character Sheet
+│   ├── storyboard_Image_planner_prompt.txt # Step 3 — Sheet → Storyboard
+│   └── storyboard_Image_to_video_prompt.txt # Step 4 — Storyboard → Video Prompt
+└── README.md
+```
 
 ---
 
