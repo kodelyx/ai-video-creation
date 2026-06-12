@@ -1,0 +1,8 @@
+.DS_Store
+*.mp4
+*.jpg
+*.jpeg
+*.png
+# Keep the two specific reference files
+!character_sheet.png
+!dp1.png
