@@ -1,6 +1,6 @@
 # AI Video Creation Pipeline 🎬
 
-> **Turn a single photo into a cinematic AI-generated Instagram reel — fully prompt-driven, no code required.**
+> **Turn a single prompt into a cinematic AI-generated Instagram reel — fully prompt-driven, no code required.**
 
 [![AI Powered](https://img.shields.io/badge/AI-Powered-blueviolet?logo=openai&logoColor=white)](#)
 [![Format](https://img.shields.io/badge/Format-9%3A16_Reel-E4405F?logo=instagram&logoColor=white)](#)
@@ -12,33 +12,31 @@
 
 ![Pipeline Flow](pipeline.png)
 
-| Step | You Provide | Prompt File Used | AI Generates |
-|:----:|:------------|:-----------------|:-------------|
-| 1 | Your photo (`dp1.png`) | [`image_to_character_prompt.txt`](image_to_character_prompt.txt) | Character identity sheet |
-| 2 | Character sheet + reel idea | [`storyboard_Image_planner_prompt.txt`](storyboard_Image_planner_prompt.txt) | 6-panel cinematic storyboard |
-| 3 | Storyboard image | [`storyboard_Image_to_video_prompt.txt`](storyboard_Image_to_video_prompt.txt) | Production-ready video prompt |
-| 4 | Video prompt + character ref | Your AI video tool (Kling/Runway/Veo) | Final 9:16 reel |
+| Step | Prompt Used | Output Generated |
+|:----:|:------------|:-----------------|
+| 1 | [`ai_influencer_prompt.txt`](ai_influencer_prompt.txt) | AI Character Photo (`dp1.png`) |
+| 2 | [`image_to_character_prompt.txt`](image_to_character_prompt.txt) | Character Identity Sheet (`character_sheet.png`) |
+| 3 | [`storyboard_Image_planner_prompt.txt`](storyboard_Image_planner_prompt.txt) | Cinematic Storyboard (`storyboard_Image.png`) |
+| 4 | [`storyboard_Image_to_video_prompt.txt`](storyboard_Image_to_video_prompt.txt) | Final Video Reel (`Finally_Video.mp4`) |
 
 ---
 
 ## Live Demo — Actual Pipeline Output
 
-Every image and video below was generated using this pipeline.
+### Step 1 → AI Character Photo (`dp1.png`)
 
-### Step 1 → Reference Photo
+This character image is generated using [`ai_influencer_prompt.txt`](ai_influencer_prompt.txt). The prompt defines the AI influencer's complete identity — face shape, eyes, skin tone, hair, expression, and style. This becomes the identity anchor for the entire pipeline.
 
-This is the **only real photo** in the entire pipeline. Everything else is AI-generated from this single image.
+> **Prompt:** [`ai_influencer_prompt.txt`](ai_influencer_prompt.txt)  
+> **Output:** `dp1.png`
 
-> **Input:** One selfie/portrait photo  
-> **Prompt:** [`image_to_character_prompt.txt`](image_to_character_prompt.txt)
-
-![Reference Photo — dp1.png](dp1.png)
+![AI Character — Generated using ai_influencer_prompt.txt](dp1.png)
 
 ---
 
-### Step 2 → Character Identity Sheet
+### Step 2 → Character Identity Sheet (`character_sheet.png`)
 
-The AI analyzes the reference photo and generates a detailed **identity lock sheet** — cataloging face shape, eyes, skin tone, hair, expression, makeup, clothing, and accessories. This sheet ensures the same face appears consistently across all future generations.
+The AI character photo (`dp1.png`) is fed into [`image_to_character_prompt.txt`](image_to_character_prompt.txt). The AI analyzes every facial detail and generates a structured **Identity Lock Sheet** — cataloging face shape, eyes, nose, lips, skin tone, hair, expression, makeup, clothing, accessories, pose, lighting, and camera characteristics.
 
 > **Input:** `dp1.png`  
 > **Prompt:** [`image_to_character_prompt.txt`](image_to_character_prompt.txt)  
@@ -50,9 +48,9 @@ The bottom strip shows **Consistency Priority (High → Low):** Face Shape → E
 
 ---
 
-### Step 3 → Cinematic Storyboard
+### Step 3 → Cinematic Storyboard (`storyboard_Image.png`)
 
-Using the character sheet and a reel concept (product promo, song lip-sync, lifestyle, etc.), the AI creates a **6-panel storyboard** with scene titles, descriptions, camera angles, mood, and color palette.
+The character sheet is used with a reel concept (product, song, lifestyle) in [`storyboard_Image_planner_prompt.txt`](storyboard_Image_planner_prompt.txt). The AI creates a **6-panel 3×2 storyboard** with scene titles, descriptions, camera angles, mood, and color palette.
 
 > **Input:** `character_sheet.png` + reel concept  
 > **Prompt:** [`storyboard_Image_planner_prompt.txt`](storyboard_Image_planner_prompt.txt)  
@@ -64,9 +62,9 @@ Each panel includes: **Scene title** · **Action description** · **Camera style
 
 ---
 
-### Step 4 → Final Video
+### Step 4 → Final Video (`Finally_Video.mp4`)
 
-The storyboard is converted into a **timestamped video generation prompt** with lip-sync, physics lock, camera direction, and negative rules — then fed to an AI video generator.
+The storyboard is converted into a **timestamped video generation prompt** using [`storyboard_Image_to_video_prompt.txt`](storyboard_Image_to_video_prompt.txt). The prompt includes scene-by-scene timestamps, lip-sync, physics lock, camera direction, Hindi dialogue, and negative rules — ready to paste into any AI video generator.
 
 > **Input:** `storyboard_Image.png`  
 > **Prompt:** [`storyboard_Image_to_video_prompt.txt`](storyboard_Image_to_video_prompt.txt)  
@@ -78,19 +76,18 @@ The storyboard is converted into a **timestamped video generation prompt** with 
 
 ## How Each Prompt Works
 
+### `ai_influencer_prompt.txt`
+Defines the AI influencer's complete identity — face shape, eyes, eyebrows, nose, lips, hairline, hairstyle, skin tone, expression. Includes identity lock priority, video instructions with Hindi dialogue, quality settings (8K, photorealistic), camera style, and negative prompts. Swap the dialogue section for each new video.
+
 ### `image_to_character_prompt.txt`
-Analyzes a reference photo and creates a professional **Character Sheet (Identity Lock Version)** with:
-- Face analysis (shape, jawline, chin, eyes, nose, lips)
-- Skin, hair, expression, makeup, clothing breakdown
-- Bottom detail boxes (Expression, Makeup, Clothing, Accessories, Pose, Lighting, Camera, Identity Keywords)
-- Consistency priority strip for future generation consistency
+Analyzes the AI character photo and creates a professional **Character Sheet (Identity Lock Version)** with detailed breakdown of face, skin, eyes, eyebrows, nose, lips, hair, expression, makeup, clothing, accessories, pose, lighting, and camera characteristics. Includes bottom detail boxes and a consistency priority strip.
 
 ### `storyboard_Image_planner_prompt.txt`
-Takes the character sheet + your reel concept and:
+Takes the character sheet + reel concept and:
 1. Analyzes character identity, outfit, mood, and aesthetic
-2. Suggests a reel base (type, mood, scene style, action, format)
-3. Asks for your approval before generating
-4. Creates a **3×2 storyboard sheet** with 6 labeled scenes, camera styles, direction notes, mood/tone, and color palette
+2. Suggests a reel base (type, mood, scene style, action)
+3. Asks for approval before generating
+4. Creates a **3×2 storyboard** with 6 scenes, camera styles, direction notes, mood/tone, and color palette
 
 ### `storyboard_Image_to_video_prompt.txt`
 Converts the storyboard into a **production-ready video prompt** with:
@@ -100,21 +97,18 @@ Converts the storyboard into a **production-ready video prompt** with:
 - Physics Lock rules (no floating objects, correct hand anatomy, 5 fingers)
 - Negative rules (no cartoon, no 3D, no distortion, no watermarks)
 
-### `ai_influencer_prompt.txt`
-**Shortcut prompt** — skip the full pipeline. Uses reference image + character sheet directly to generate a lip-synced Hindi dialogue video. Just swap the dialogue section for each new video. Identity lock stays the same.
-
 ---
 
 ## Compatible AI Tools
 
-| Tool | Best For | Use With |
-|:-----|:---------|:---------|
-| **Kling AI** | Lip-sync + identity consistency | Video generation (Step 4) |
-| **Runway Gen-3** | Cinematic motion quality | Video generation (Step 4) |
-| **Google Veo** | Photorealism | Video generation (Step 4) |
-| **Luma Dream Machine** | Fast iterations | Video generation (Step 4) |
-| **ChatGPT / Gemini** | Image generation | Character sheet + Storyboard (Steps 1-3) |
-| **Midjourney** | High-quality images | Character sheet (Step 1) |
+| Tool | Best For |
+|:-----|:---------|
+| **Kling AI** | Lip-sync + identity consistency |
+| **Runway Gen-3** | Cinematic motion quality |
+| **Google Veo** | Photorealism |
+| **Luma Dream Machine** | Fast iterations |
+| **ChatGPT / Gemini** | Character photo, sheet + storyboard generation |
+| **Midjourney** | High-quality character images |
 
 ---
 
@@ -122,15 +116,15 @@ Converts the storyboard into a **production-ready video prompt** with:
 
 | File | What It Does |
 |:-----|:-------------|
-| `dp1.png` | Source identity photo |
-| `character_sheet.png` | AI-generated identity lock sheet |
+| `ai_influencer_prompt.txt` | Step 1 — Generates AI character photo |
+| `dp1.png` | AI-generated character photo |
+| `image_to_character_prompt.txt` | Step 2 — Photo → Character Sheet |
+| `character_sheet.png` | Identity lock reference sheet |
+| `storyboard_Image_planner_prompt.txt` | Step 3 — Sheet → Storyboard |
 | `storyboard_Image.png` | 6-panel cinematic storyboard |
+| `storyboard_Image_to_video_prompt.txt` | Step 4 — Storyboard → Video Prompt |
 | `demo.gif` | Final output preview (animated) |
 | `Finally_Video.mp4` | Final output (full quality) |
-| `image_to_character_prompt.txt` | Photo → Character Sheet prompt |
-| `storyboard_Image_planner_prompt.txt` | Character Sheet → Storyboard prompt |
-| `storyboard_Image_to_video_prompt.txt` | Storyboard → Video Prompt generator |
-| `ai_influencer_prompt.txt` | Direct video generation shortcut |
 
 ---
 
